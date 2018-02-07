@@ -1,8 +1,23 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net"
+)
 
-//Broadband function.
-func Broadband() {
-	fmt.Println("Hello broadband")
+//ConnectBroadband function.
+func ConnectBroadband(address string, port int) (broadband Broadband, err error) {
+	fmt.Printf("Connecting to: %s", address)
+	tcpAdress := fmt.Sprintf("%s:%v", address, port)
+	con, err := net.Dial("tcp", tcpAdress)
+	if err != nil {
+		return Broadband{Connection: nil}, err
+	}
+
+	return Broadband{Connection: con}, nil
+}
+
+// Broadband type.
+type Broadband struct {
+	Connection net.Conn
 }
