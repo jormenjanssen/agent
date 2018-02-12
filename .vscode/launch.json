@@ -22,6 +22,7 @@
             "program": "${fileDirname}",
             "env": {},
             "args": [],
+            "buildFlags": "-m",
             "showLog": true
         }
     ]
